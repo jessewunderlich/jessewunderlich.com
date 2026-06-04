@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="404 :: lost in cyberspace"
+  description="That page wandered off. Even the best corners of the web have dead ends."
+  ogTitle="404 — lost in cyberspace">
+  <div class="box">
+    <h2>&gt; 404_not_found.txt</h2>
+    <p class="lead" style="font-size:1.4rem;text-align:center;">
+      <span class="blink">⚠</span> Whoops — that page wandered off. <span class="blink">⚠</span>
+    </p>
+    <p>You've hit a dead link, a typo, or a corner of the site that's still
+    <b>under construction</b> (and around here, that's a permanent state of being).</p>
+    <p style="text-align:center;font-family:'Courier New',monospace;background:#000;color:#0f0;
+      border:2px inset #0f0;padding:10px;">
+      ERROR 404: THE PAGE YOU SEEK<br>IS IN ANOTHER CASTLE
+    </p>
+    <p>Try one of these instead:</p>
+    <ul class="now">
+      <li>🏠 <a href="/">back to home</a></li>
+      <li>👋 <a href="/about/">about me</a></li>
+      <li>🛠️ <a href="/projects/">what I'm building</a></li>
+      <li>✍️ <a href="/guestbook/">sign the guestbook</a></li>
+    </ul>
+  </div>
+</BaseLayout>
