@@ -69,6 +69,8 @@
   footer{text-align:center; font-size:.75rem; color:#ddd; margin-top:14px;}
   .ring{font-size:.75rem;}
   .construction{text-align:center; font-size:.8rem; color:var(--hot); font-weight:bold;}
+  .gb-frame{border:2px inset #ccc; background:#fff; padding:8px; margin-top:8px;
+    background-image:repeating-linear-gradient(transparent 0 27px, #cfe2ff 27px 28px);}
 </style>
 </head>
 <body>
@@ -152,15 +154,35 @@
 
       <div class="box" id="guestbook">
         <h2>&gt; guestbook</h2>
-        <p style="font-size:.85rem;">Drop a line — this runs on GitHub so it stays mine, no ads, no spam farms.</p>
-        <p><a href="#" style="font-weight:bold;">✍️ Sign the guestbook &raquo;</a>
-          <br><span style="font-size:.7rem;color:#666;">(wires to GitHub Issues / giscus once we pick a repo)</span></p>
+        <p style="font-size:.85rem;">Drop a line — runs on GitHub Discussions, so it stays mine. No ads, no spam farms, no tracking. Sign in with GitHub to post.</p>
+        <div class="gb-frame">
+          <script src="https://giscus.app/client.js"
+            data-repo="jessewunderlich/jessewunderlich.com"
+            data-repo-id="R_kgDOSw3P3g"
+            data-category="General"
+            data-category-id="DIC_kwDOSw3P3s4C-fH1"
+            data-mapping="specific"
+            data-term="Guestbook"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+          </script>
+          <noscript>
+            <p style="font-size:.8rem;">The guestbook needs JavaScript. You can also
+            <a href="https://github.com/jessewunderlich/jessewunderlich.com/discussions">post directly on GitHub Discussions &raquo;</a></p>
+          </noscript>
+        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>⌁ hand-coded · no frameworks · ships zero JS ⌁</p>
+    <p>⌁ hand-coded · no frameworks · just one little guestbook script ⌁</p>
     <p>&copy; 2026 Jesse Wunderlich &middot; made in Frazee, MN &middot; 🔱</p>
   </footer>
 
