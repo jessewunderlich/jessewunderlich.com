@@ -71,6 +71,7 @@ a{color:var(--link);} a:visited{color:var(--vis);}
 @media(prefers-reduced-motion:reduce){.blink{animation:none;}}
 .counter{font-family:"Courier New",monospace; background:#000; color:#0f0;
   border:2px inset #0f0; padding:2px 8px; letter-spacing:3px;}
+.counter-img{display:block; margin:0 auto; max-width:100%; height:auto; image-rendering:auto;}
 footer{text-align:center; font-size:.75rem; color:#ddd; margin-top:14px;}
 footer a{color:var(--cyber);}
 .ring{font-size:.75rem;}
