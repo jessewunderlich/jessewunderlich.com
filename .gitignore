@@ -13,3 +13,7 @@ Thumbs.db
 # Node (in case tooling is added later)
 node_modules/
 npm-debug.log*
+
+# Astro build output
+dist/
+.astro/

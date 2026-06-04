@@ -1,0 +1,126 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'Jesse Wunderlich',
+  description = "The personal corner of the web for Jesse Wunderlich — USMC Sgt (ret), drone operator, serial builder, and dad up in lake country, Minnesota. Hand-coded, no trackers.",
+  ogTitle = 'Jesse Wunderlich — a hand-made corner of the web',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og-image.png', Astro.site).href;
+
+const nav = [
+  { href: '/', label: '[*] home' },
+  { href: '/about/', label: '[*] about me' },
+  { href: '/now/', label: '[*] /now' },
+  { href: '/projects/', label: '[*] projects' },
+  { href: '/uses/', label: '[*] /uses' },
+  { href: '/links/', label: '[*] links + ring' },
+  { href: '/guestbook/', label: '[*] guestbook' },
+];
+const path = Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#2a0845" />
+  <meta name="author" content="Jesse Wunderlich" />
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jesse Wunderlich" />
+  <meta property="og:title" content={ogTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Jesse Wunderlich — personal site, early-web style" />
+  <meta property="og:locale" content="en_US" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:creator" content="@Wund3rl1ch" />
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jesse Wunderlich",
+    "url": "https://www.jesse-wunderlich.com/",
+    "jobTitle": "UAS Operator",
+    "description": "USMC Sgt (ret), drone operator, serial builder, and dad in Frazee, Minnesota.",
+    "homeLocation": { "@type": "Place", "name": "Frazee, Minnesota" },
+    "sameAs": [
+      "https://github.com/jessewunderlich",
+      "https://twitter.com/Wund3rl1ch",
+      "https://novanetworth.com",
+      "https://sardonyx.software"
+    ]
+  })} />
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<div class="wrap">
+
+  <div class="marquee" aria-hidden="true"><span>★ Welcome to my corner of the web ★ Built by hand in lake country, MN ★ Semper Fi ★ Now flying drones &amp; shipping code ★ Sign my guestbook ★</span></div>
+
+  <header>
+    <a href="/"><h1>Jesse Wunderlich</h1></a>
+    <div class="tag">USMC Sgt (ret) &middot; UAS operator &middot; serial builder &middot; dad &middot; Frazee, MN</div>
+    <div style="margin-top:8px;">
+      <span class="badge">EST. 1995</span>
+      <span class="badge">MADE BY HAND</span>
+      <span class="badge">NO TRACKERS</span>
+      <span class="badge">100% ME</span>
+    </div>
+  </header>
+
+  <div class="cols">
+    <div class="side">
+      <div class="box">
+        <h2>&gt; navigate</h2>
+        <nav aria-label="Primary">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={(path === item.href || (item.href !== '/' && path.startsWith(item.href))) ? 'page' : undefined}
+            >{item.label}</a>
+          ))}
+        </nav>
+      </div>
+      <div class="box" style="text-align:center;">
+        <h2>&gt; visitors</h2>
+        <span class="counter">0000420</span>
+        <p style="font-size:.7rem;margin:8px 0 0;">a tasteful fake<br>(no backend yet)</p>
+      </div>
+      <div class="box construction">
+        🚧 UNDER<br>CONSTRUCTION 🚧<br>
+        <span style="font-size:.7rem;font-weight:normal;color:#666;">(always, that's the point)</span>
+      </div>
+    </div>
+
+    <main class="main" id="content">
+      <slot />
+    </main>
+  </div>
+
+  <footer>
+    <p>⌁ hand-coded · built with Astro · no trackers · one little guestbook script ⌁</p>
+    <p>&copy; 2026 Jesse Wunderlich &middot; made in Frazee, MN &middot; 🔱</p>
+  </footer>
+
+</div>
+</body>
+</html>
