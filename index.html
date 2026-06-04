@@ -4,6 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jesse Wunderlich :: HOME</title>
+<meta name="description" content="The personal corner of the web for Jesse Wunderlich — USMC Sgt (ret), drone operator, serial builder, and dad up in lake country, Minnesota. Hand-coded, no trackers.">
+<link rel="canonical" href="https://www.jesse-wunderlich.com/">
+<meta name="theme-color" content="#2a0845">
+<meta name="author" content="Jesse Wunderlich">
+<!-- favicon -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jesse Wunderlich">
+<meta property="og:title" content="Jesse Wunderlich — a hand-made corner of the web">
+<meta property="og:description" content="USMC Sgt (ret), drone operator, serial builder, dad. My workshop wall, pinned with what I'm making, breaking, and learning.">
+<meta property="og:url" content="https://www.jesse-wunderlich.com/">
+<meta property="og:image" content="https://www.jesse-wunderlich.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jesse Wunderlich — personal site, early-web style">
+<meta property="og:locale" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jesse Wunderlich — a hand-made corner of the web">
+<meta name="twitter:description" content="USMC Sgt (ret), drone operator, serial builder, dad. My workshop wall on the indie web.">
+<meta name="twitter:image" content="https://www.jesse-wunderlich.com/og-image.png">
+<meta name="twitter:creator" content="@Wund3rl1ch">
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jesse Wunderlich",
+  "url": "https://www.jesse-wunderlich.com/",
+  "jobTitle": "UAS Operator",
+  "description": "USMC Sgt (ret), drone operator, serial builder, and dad in Frazee, Minnesota.",
+  "homeLocation": { "@type": "Place", "name": "Frazee, Minnesota" },
+  "sameAs": [
+    "https://github.com/jessewunderlich",
+    "https://twitter.com/Wund3rl1ch",
+    "https://novanetworth.com",
+    "https://sardonyx.software"
+  ]
+}
+</script>
 <style>
   :root{
     --ink:#1a1a2e; --paper:#fdf6e3; --hot:#ff3e88; --cyber:#00e5ff;
@@ -71,12 +114,17 @@
   .construction{text-align:center; font-size:.8rem; color:var(--hot); font-weight:bold;}
   .gb-frame{border:2px inset #ccc; background:#fff; padding:8px; margin-top:8px;
     background-image:repeating-linear-gradient(transparent 0 27px, #cfe2ff 27px 28px);}
+  .skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--ink);
+    padding:8px 12px; font-weight:bold; z-index:99; border:2px solid var(--ink);}
+  .skip:focus{left:8px; top:8px;}
+  a:focus-visible{outline:3px solid var(--cyber); outline-offset:2px;}
 </style>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
 <div class="wrap">
 
-  <div class="marquee"><span>★ Welcome to my corner of the web ★ Built by hand in lake country, MN ★ Semper Fi ★ Now flying drones &amp; shipping code ★ Sign my guestbook below ★</span></div>
+  <div class="marquee" aria-hidden="true"><span>★ Welcome to my corner of the web ★ Built by hand in lake country, MN ★ Semper Fi ★ Now flying drones &amp; shipping code ★ Sign my guestbook below ★</span></div>
 
   <header>
     <h1>Jesse Wunderlich</h1>
@@ -93,7 +141,7 @@
     <div class="side">
       <div class="box">
         <h2>&gt; navigate</h2>
-        <nav>
+        <nav aria-label="Primary">
           <a href="#about">[*] about me</a>
           <a href="#now">[*] /now</a>
           <a href="#projects">[*] projects</a>
@@ -112,7 +160,7 @@
       </div>
     </div>
 
-    <div class="main">
+    <main class="main">
       <div class="box" id="about">
         <h2>&gt; about_me.txt</h2>
         <p>Hey, I'm Jesse. Oldest of seven, Marine turned drone operator, and I've started more
@@ -150,6 +198,8 @@
         <p style="font-size:.8rem;">⊹ <a href="https://neocities.org">Neocities</a> &middot;
           ⊹ <a href="https://melonking.net">Melonking</a> &middot;
           ⊹ <a href="https://indieweb.org">IndieWeb</a></p>
+        <p style="font-size:.8rem;">Find me: <a rel="me" href="https://github.com/jessewunderlich">GitHub</a> &middot;
+          <a rel="me" href="https://twitter.com/Wund3rl1ch">X / Twitter</a></p>
       </div>
 
       <div class="box" id="guestbook">
@@ -178,7 +228,7 @@
           </noscript>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 
   <footer>
