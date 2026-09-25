@@ -1,85 +1,142 @@
+/* ================================================================
+   Flight Log — design system for jesse-wunderlich.com (2026 rebuild)
+   One signature idea: UAS instrument-panel / mission-log framing.
+   Palette: near-black + one amber accent family. No competing accents.
+   ================================================================ */
+
 :root{
-  --ink:#1a1a2e; --paper:#fdf6e3; --hot:#ff3e88; --cyber:#00e5ff;
-  --gold:#ffd700; --grass:#2ecc40; --link:#0033cc; --vis:#7700aa;
+  --bg:#0a0704;         /* page background */
+  --surface:#1a1208;    /* panel/box backgrounds */
+  --surface-2:#120d06;  /* recessed panels (counter, code blocks) */
+  --border:#3a2a10;     /* panel borders */
+  --dim:#9a7830;        /* secondary/metadata text, status-line labels (4.9:1 on --bg) */
+  --text:#e8d9b5;       /* body copy (not pure amber — easier long-read contrast) */
+  --amber:#ffb000;      /* primary accent — links, headings */
+  --amber-bright:#ffcc33; /* focus states, active nav, hover */
+  --green:#4a9d5f;      /* secondary accent — success/online states */
+  --highlight:#fff5cc;  /* rare emphasis only */
+  --font-mono:"JetBrains Mono","IBM Plex Mono","Courier New",monospace;
+  --font-body:"IBM Plex Sans","Inter",system-ui,-apple-system,sans-serif;
 }
+
 *{box-sizing:border-box;}
+html{color-scheme:dark;}
 body{
   margin:0; padding:0;
-  font-family:"Comic Sans MS","Trebuchet MS",Verdana,sans-serif;
-  color:var(--ink);
-  background-color:#2a0845;
+  font-family:var(--font-body);
+  color:var(--text);
+  background:var(--bg);
   background-image:
-    repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 12px, transparent 12px 24px);
-  line-height:1.5;
+    linear-gradient(rgba(255,176,0,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,176,0,.025) 1px, transparent 1px);
+  background-size:28px 28px;
+  line-height:1.6;
 }
-.wrap{max-width:880px; margin:0 auto; padding:12px;}
+.wrap{max-width:960px; margin:0 auto; padding:16px;}
 
-/* top marquee */
-.marquee{
-  background:var(--ink); color:var(--cyber); border:3px ridge var(--cyber);
-  padding:6px; font-family:"Courier New",monospace; font-weight:bold;
-  overflow:hidden; white-space:nowrap; margin-bottom:10px;
-}
-.marquee span{display:inline-block; padding-left:100%; animation:scroll 18s linear infinite;}
-@keyframes scroll{to{transform:translateX(-100%);}}
-@media(prefers-reduced-motion:reduce){.marquee span{animation:none; padding-left:0;}}
+a{color:var(--amber);}
+a:visited{color:var(--amber);}
+a:hover{color:var(--amber-bright);}
+a:focus-visible{outline:2px solid var(--amber-bright); outline-offset:2px;}
 
-/* header */
+/* ---- header / instrument readout ---- */
 header{
-  text-align:center; background:var(--paper);
-  border:5px outset var(--gold); padding:18px 12px; margin-bottom:12px;
+  border:1px solid var(--border); background:var(--surface);
+  padding:20px 18px; margin-bottom:14px; border-radius:2px;
+  position:relative;
+}
+header::before{
+  content:"MISSION LOG — JESSE WUNDERLICH";
+  display:block; font-family:var(--font-mono); font-size:.65rem;
+  letter-spacing:.15em; color:var(--dim); margin-bottom:10px;
 }
 h1{
-  margin:0; font-size:clamp(2rem,7vw,3.6rem);
-  background:linear-gradient(90deg,var(--hot),var(--gold),var(--cyber),var(--grass));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow:2px 2px 0 rgba(0,0,0,.15); letter-spacing:1px;
+  margin:0; font-family:var(--font-mono); font-weight:700;
+  font-size:clamp(1.8rem,6vw,2.8rem); color:var(--amber);
+  letter-spacing:-.01em;
 }
 header a{text-decoration:none;}
-.tag{font-size:.95rem; color:#444; margin-top:6px;}
-.badge{display:inline-block; font-size:.7rem; background:var(--grass); color:#fff;
-  border:2px outset #fff; padding:1px 6px; margin:0 2px; font-family:monospace;}
-
-/* layout */
-.cols{display:flex; gap:12px; flex-wrap:wrap;}
-.side{flex:1 1 200px;}
-.main{flex:3 1 420px;}
-.box{background:var(--paper); border:4px ridge var(--hot); padding:12px; margin-bottom:12px;}
-.box h2{
-  margin:-12px -12px 10px; padding:6px 10px; font-size:1.1rem;
-  background:var(--ink); color:var(--gold); font-family:"Courier New",monospace;
-  border-bottom:3px solid var(--hot);
+.tag{
+  font-family:var(--font-mono); font-size:.85rem; color:var(--dim);
+  margin-top:8px; letter-spacing:.02em;
 }
-nav a{display:block; padding:5px 8px; margin:3px 0; background:#fff;
-  border:2px outset #ccc; text-decoration:none; color:var(--link); font-weight:bold;}
-nav a:hover{background:var(--gold); border-style:inset; color:var(--ink);}
-nav a[aria-current="page"]{background:var(--gold); border-style:inset; color:var(--ink);}
-a{color:var(--link);} a:visited{color:var(--vis);}
+.badge{
+  display:inline-block; font-size:.65rem; font-family:var(--font-mono);
+  color:var(--dim); border:1px solid var(--border); padding:2px 7px;
+  margin:6px 6px 0 0; letter-spacing:.05em; border-radius:2px;
+}
 
-.now{font-size:.85rem;}
-.now li{margin-bottom:5px;}
-.proj{border:2px dashed #888; padding:8px; margin-bottom:8px; background:#fff;}
-.proj b{color:var(--hot);}
-.uses-cat{margin-bottom:12px;}
-.uses-cat h3{margin:0 0 4px; font-family:"Courier New",monospace; color:var(--hot); font-size:.95rem;}
-.uses-cat ul{margin:0; padding-left:20px; font-size:.85rem;}
-.uses-cat li{margin-bottom:3px;}
-.todo{color:#999; font-style:italic;}
+/* ---- layout ---- */
+.cols{display:flex; gap:14px; flex-wrap:wrap;}
+.side{flex:1 1 220px;}
+.main{flex:3 1 440px;}
 
-.blink{animation:blink 1s steps(2) infinite;}
-@keyframes blink{50%{opacity:0;}}
-@media(prefers-reduced-motion:reduce){.blink{animation:none;}}
-.counter{font-family:"Courier New",monospace; background:#000; color:#0f0;
-  border:2px inset #0f0; padding:2px 8px; letter-spacing:3px;}
-.counter-img{display:block; margin:0 auto; max-width:100%; height:auto; image-rendering:auto;}
-footer{text-align:center; font-size:.75rem; color:#ddd; margin-top:14px;}
-footer a{color:var(--cyber);}
-.ring{font-size:.75rem;}
-.construction{text-align:center; font-size:.8rem; color:var(--hot); font-weight:bold;}
-.gb-frame{border:2px inset #ccc; background:#fff; padding:8px; margin-top:8px;
-  background-image:repeating-linear-gradient(transparent 0 27px, #cfe2ff 27px 28px);}
-.skip{position:absolute; left:-999px; top:0; background:var(--gold); color:var(--ink);
-  padding:8px 12px; font-weight:bold; z-index:99; border:2px solid var(--ink);}
+.box{
+  background:var(--surface); border:1px solid var(--border);
+  padding:16px; margin-bottom:14px; border-radius:2px;
+}
+.box h2{
+  margin:-16px -16px 12px; padding:8px 14px; font-size:.95rem;
+  background:var(--surface-2); color:var(--amber); font-family:var(--font-mono);
+  border-bottom:1px solid var(--border); letter-spacing:.02em;
+}
+
+/* nav — instrument selector */
+nav a{
+  display:flex; align-items:center; gap:8px;
+  padding:7px 10px; margin:2px 0; text-decoration:none;
+  color:var(--text); font-family:var(--font-mono); font-size:.85rem;
+  border:1px solid transparent; border-radius:2px;
+}
+nav a:hover{color:var(--amber); border-color:var(--border);}
+nav a[aria-current="page"]{
+  color:var(--amber); background:var(--surface-2); border-color:var(--amber);
+}
+
+.now{font-size:.9rem;}
+.now li{margin-bottom:6px;}
+.proj{border:1px solid var(--border); padding:12px; margin-bottom:10px; background:var(--surface-2);}
+.proj b{color:var(--amber);}
+.uses-cat{margin-bottom:14px;}
+.uses-cat h3{margin:0 0 6px; font-family:var(--font-mono); color:var(--dim); font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;}
+.uses-cat ul{margin:0; padding-left:20px; font-size:.9rem;}
+.uses-cat li{margin-bottom:4px;}
+.todo{color:var(--dim); font-style:italic;}
+
+/* ---- status line (recurring flight-log motif) ---- */
+.status-line{
+  font-family:var(--font-mono); font-size:.75rem; color:var(--dim);
+  letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px;
+}
+
+/* ---- visitor counter (real, self-hosted, restyled to match) ---- */
+.counter-box{text-align:center;}
+.counter-img{display:block; margin:0 auto; max-width:100%; height:auto;}
+
+footer{text-align:center; font-size:.75rem; color:var(--dim); margin-top:16px; font-family:var(--font-mono);}
+footer a{color:var(--dim);}
+footer a:hover{color:var(--amber);}
+.ring{font-size:.85rem;}
+
+.gb-frame{border:1px solid var(--border); background:var(--surface-2); padding:10px; margin-top:10px; border-radius:2px;}
+
+.skip{
+  position:absolute; left:-999px; top:0; background:var(--amber); color:var(--bg);
+  padding:8px 12px; font-weight:bold; z-index:99; border-radius:2px;
+}
 .skip:focus{left:8px; top:8px;}
-a:focus-visible{outline:3px solid var(--cyber); outline-offset:2px;}
-.lead{font-size:.95rem;}
+
+.lead{font-size:1rem; color:var(--text);}
+
+/* ---- scroll reveal (CSS-driven; JS only toggles a class) ---- */
+.reveal{opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease;}
+.reveal.is-visible{opacity:1; transform:none;}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1; transform:none; transition:none;}
+}
+
+/* ---- error / terminal-style callouts (404) ---- */
+.term-block{
+  text-align:center; font-family:var(--font-mono); background:var(--surface-2);
+  color:var(--amber); border:1px solid var(--border); padding:14px; border-radius:2px;
+}

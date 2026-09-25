@@ -1,0 +1,14 @@
+# Jesse Wunderlich
+
+> Personal site for Jesse Wunderlich — USMC Sgt (ret), UAS/ScanEagle operator, serial builder, husband and dad in Frazee, Minnesota. Hand-coded, static, no trackers.
+
+## Core pages
+- [Home](https://www.jesse-wunderlich.com/): Who Jesse is, at a glance.
+- [About](https://www.jesse-wunderlich.com/about/): Background — military service, family, the long game.
+- [Projects](https://www.jesse-wunderlich.com/projects/): What Jesse is building — Nova Net Worth, Sardonyx Software, temperat.io.
+- [Uses](https://www.jesse-wunderlich.com/uses/): Hardware, software, and tools Jesse uses to build.
+- [Links](https://www.jesse-wunderlich.com/links/): Where to find Jesse elsewhere on the web.
+- [Guestbook](https://www.jesse-wunderlich.com/guestbook/): Leave a note, backed by GitHub Discussions.
+
+## Reference
+- [Sitemap](https://www.jesse-wunderlich.com/sitemap-index.xml): Full site index.

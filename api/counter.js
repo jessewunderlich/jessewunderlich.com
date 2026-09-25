@@ -42,12 +42,12 @@ function renderSVG(value) {
   let cells = '';
   digits.forEach((d, i) => {
     const x = pad + i * (cw + gap);
-    cells += `<rect x="${x}" y="${pad}" width="${cw}" height="${ch}" rx="4" fill="#0a0a0a" stroke="#3a3a3a" stroke-width="1"/>`;
+    cells += `<rect x="${x}" y="${pad}" width="${cw}" height="${ch}" rx="4" fill="#120d06" stroke="#3a2a10" stroke-width="1"/>`;
     cells += `<text x="${x + cw / 2}" y="${pad + ch / 2 + 1}" fill="#ffb000" font-family="'Courier New',Courier,monospace" font-size="30" font-weight="bold" text-anchor="middle" dominant-baseline="central">${d}</text>`;
   });
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
-<rect x="0" y="0" width="${width}" height="${height}" rx="6" fill="#1a1a1a"/>
+<rect x="0" y="0" width="${width}" height="${height}" rx="6" fill="#0a0704"/>
 ${cells}
 </svg>`;
 }
