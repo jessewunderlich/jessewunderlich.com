@@ -5,7 +5,12 @@
 **Date:** 2026-09-24 (updated after audit + second research pass)
 **Ask:** "Wipe the codebase, start fresh, go all out for a fresh new experience." (2026-09-16) → "What do you recommend? Do as much research as needed." → "Comprehensive plan doc." → "Drop the /now page. Yes, wipe the codebase and start fresh. Audit the doc and do more research."
 
-**Confirmed decisions (this pass):**
+**Round 3 audit (this pass) — implementation gaps found and closed:**
+- View Transitions were *documented* (Section 2.6) but never actually wired up. Fixed: added Astro's `<ClientRouter />` (from `astro:transitions` — this is the current Astro 6 name; it replaced `<ViewTransitions />` in Astro 5) to `BaseLayout.astro`.
+- `public/favicon.svg` and `public/og-image.png` were both still the *old* purple/pink/cyan design — a real, visible inconsistency (a redesigned dark amber site sharing a mismatched purple browser-tab icon and social-card image). Fixed: hand-wrote a new favicon in the Flight Log palette; generated a new OG image (near-black background, amber monospace wordmark, HUD-style corner ticks) and cropped it to the correct 1200×630. `favicon.ico` and `apple-touch-icon.png` (raster, harder to hand-edit) are still old-style — flagged as a small remaining inconsistency, not blocking, since browsers prefer the SVG favicon when present.
+- Attempted an automated accessibility pass (`@axe-core/cli` against a local `astro preview` server) to verify contrast beyond the one token checked by hand. The tooling itself didn't cooperate in this sandbox (chromedriver/webdriver connection errors, not a site problem) — reporting this honestly rather than claiming a pass that didn't actually run. The manual WCAG relative-luminance contrast math in Section 2.8 still stands (that's real, computed math, not a tool claim); a real Lighthouse/axe run from an ordinary browser DevTools is the recommended final check before merge, and is a five-minute thing Jesse can do himself against the live Vercel preview.
+
+**Confirmed decisions (earlier pass):**
 - Drop the `/now` page entirely — Jesse doesn't want the upkeep burden. Site goes from 7 pages to 6 + 404.
 - "Wipe and start fresh" confirmed = full design/template/copy rebuild inside the existing repo. Git history, Vercel project, domain, and the real Upstash visitor-count data stay intact (no reason to lose them; re-reading the original ask, "fresh" was never about infrastructure).
 - Flight Log direction is a go — no objection raised across two rounds of "what do you recommend," and it's the strongest, most-Jesse-specific answer research supports. Treating it as approved rather than re-asking a third time.
