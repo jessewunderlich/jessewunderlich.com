@@ -5,9 +5,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   title="Guestbook :: Jesse Wunderlich"
   description="Sign Jesse Wunderlich's guestbook — old-web style, backed by GitHub Discussions."
   ogTitle="Sign Jesse's guestbook">
-  <div class="box">
-    <h2>&gt; guestbook</h2>
-    <p style="font-size:.85rem;">Drop a line — runs on GitHub Discussions, so it stays mine.
+  <div class="box reveal">
+    <h2>&gt; guestbook.log</h2>
+    <p class="lead">Drop a line — runs on GitHub Discussions, so it stays mine.
     No ads, no spam farms, no tracking. Sign in with GitHub to post.</p>
     <div class="gb-frame">
       <script src="https://giscus.app/client.js"
@@ -21,12 +21,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="top"
-        data-theme="light"
+        data-theme="dark_dimmed"
         data-lang="en"
         crossorigin="anonymous"
         async></script>
       <noscript>
-        <p style="font-size:.8rem;">The guestbook needs JavaScript. You can also
+        <p class="status-line">The guestbook needs JavaScript. You can also
         <a href="https://github.com/jessewunderlich/jessewunderlich.com/discussions" rel="noopener">post directly on GitHub Discussions &raquo;</a></p>
       </noscript>
     </div>

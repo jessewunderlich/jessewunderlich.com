@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
 const {
   title = 'Jesse Wunderlich',
@@ -11,13 +12,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og-image.png', Astro.site).href;
 
 const nav = [
-  { href: '/', label: '[*] home' },
-  { href: '/about/', label: '[*] about me' },
-  { href: '/now/', label: '[*] /now' },
-  { href: '/projects/', label: '[*] projects' },
-  { href: '/uses/', label: '[*] /uses' },
-  { href: '/links/', label: '[*] links + ring' },
-  { href: '/guestbook/', label: '[*] guestbook' },
+  { href: '/', label: 'home' },
+  { href: '/about/', label: 'about' },
+  { href: '/projects/', label: 'projects' },
+  { href: '/uses/', label: '/uses' },
+  { href: '/links/', label: 'links + ring' },
+  { href: '/guestbook/', label: 'guestbook' },
 ];
 const path = Astro.url.pathname;
 ---
@@ -29,13 +29,14 @@ const path = Astro.url.pathname;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta name="theme-color" content="#2a0845" />
+  <meta name="theme-color" content="#0a0704" />
   <meta name="author" content="Jesse Wunderlich" />
   <!-- favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  <ClientRouter />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Jesse Wunderlich" />
@@ -45,7 +46,7 @@ const path = Astro.url.pathname;
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Jesse Wunderlich — personal site, early-web style" />
+  <meta property="og:image:alt" content="Jesse Wunderlich — personal site, flight-log style" />
   <meta property="og:locale" content="en_US" />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -74,13 +75,11 @@ const path = Astro.url.pathname;
 <a class="skip" href="#content">Skip to content</a>
 <div class="wrap">
 
-  <div class="marquee" aria-hidden="true"><span>★ Welcome to my corner of the web ★ Built by hand in lake country, MN ★ Semper Fi ★ Now flying drones &amp; shipping code ★ Sign my guestbook ★</span></div>
-
   <header class="h-card">
     <a class="u-url u-uid" rel="me" href="https://www.jesse-wunderlich.com/"><h1 class="p-name">Jesse Wunderlich</h1></a>
     <div class="tag"><span class="p-job-title">USMC Sgt (ret) &middot; UAS operator</span> &middot; serial builder &middot; dad &middot; <span class="p-locality">Frazee</span>, <span class="p-region">MN</span></div>
     <p class="p-note" hidden>USMC Sgt (ret), drone operator, serial builder, and dad in lake country, Minnesota.</p>
-    <div style="margin-top:8px;">
+    <div>
       <span class="badge">EST. 1995</span>
       <span class="badge">MADE BY HAND</span>
       <span class="badge">NO TRACKERS</span>
@@ -101,14 +100,10 @@ const path = Astro.url.pathname;
           ))}
         </nav>
       </div>
-      <div class="box" style="text-align:center;">
+      <div class="box counter-box">
         <h2>&gt; visitors</h2>
         <img class="counter-img" src="/api/counter" alt="visitor counter" width="244" height="58" />
-        <p style="font-size:.7rem;margin:8px 0 0;">real count &middot; no trackers<br>hand-rolled odometer</p>
-      </div>
-      <div class="box construction">
-        🚧 UNDER<br>CONSTRUCTION 🚧<br>
-        <span style="font-size:.7rem;font-weight:normal;color:#666;">(always, that's the point)</span>
+        <p class="status-line" style="margin:8px 0 0;">real count &middot; no trackers</p>
       </div>
     </div>
 
@@ -118,10 +113,12 @@ const path = Astro.url.pathname;
   </div>
 
   <footer>
-    <p>⌁ hand-coded · built with Astro · no trackers · one little guestbook script ⌁</p>
+    <p>hand-coded &middot; built with Astro &middot; no trackers &middot; one little guestbook script</p>
     <p>&copy; 2026 Jesse Wunderlich &middot; made in Frazee, MN &middot; 🔱</p>
   </footer>
 
 </div>
+
+<script type="module" src="/reveal.js"></script>
 </body>
 </html>
